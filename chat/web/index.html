@@ -1,16 +1,52 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Chat</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     </head>
     <body>
-        <div>TODO write content</div>
+
+        <!-- INIZIO CORPO DELLA PAGINA -->
+        <div class="container">
+            <!-- CONTENITORE CHE DEFINISCE I MARGINI DELLA PAGINA -->
+            <div class="col-12">
+                <!-- DEFINIZIONE DELLA RIGA 1 -->
+                <div class="row" style="margin-top: 5%;">
+                    <div class="col-4"></div>
+                    <div class="col-4">
+                        <h2><p class="text-center font-italic"><sup>AB</sup><sub>Chat</sub></p></h2>
+                    </div>
+                    <div class="col-4"></div>
+                </div>
+                <!-- CHIUSURA RIGA 1 -->
+                <div class="col-12">
+                <div class="row">
+                        <div class="col-2"></div>
+                        <div class="col-8">
+                    <form>
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Username</label>
+                          <input type="email" class="form-control" name="inputUsername" aria-describedby="emailHelp" placeholder="Enter username">
+                          <small id="userHelp" class="form-text text-muted">Input your personal username, not your mail friend!</small>
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputPassword1">Password</label>
+                          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                          <small id="passHelp" class="form-text text-muted">I think it's like password1234 or ******</small>
+                        </div>
+                        <div class="form-check">
+                          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                      </form>
+                          </div>
+                        <div class="col-2"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- CHIUSURA DELLA COLONNA CHE DEFINISCE I MARGINI -->
+        </div>
+        <!-- FINE CORPO DELLA PAGINA -->
+    
     </body>
 </html>

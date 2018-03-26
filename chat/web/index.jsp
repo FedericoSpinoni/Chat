@@ -1,11 +1,21 @@
+<%-- 
+    Document   : index
+    Created on : 26-mar-2018, 17.48.42
+    Author     : mike
+--%>
+
+<%@page import="javax.script.ScriptEngine"%>
+<%@page import="com.model.login"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
     <head>
-        <title>Chat</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
     </head>
     <body>
-
-        <!-- INIZIO CORPO DELLA PAGINA -->
+         <!-- INIZIO CORPO DELLA PAGINA -->
         <div class="container">
             <!-- CONTENITORE CHE DEFINISCE I MARGINI DELLA PAGINA -->
             <div class="col-12">
@@ -38,6 +48,15 @@
                           <label class="form-check-label" for="exampleCheck1">Check me out</label>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
+                        <%
+                            login l= null;
+                            /*
+                                if(l.verifyLogin("fedespino", "1234") == true)
+                                    codice per controllare nel database la presenza dell'user, tramite la funzione verifyLogin
+                                else 
+                                   out.print("error");
+                            */
+                        %>
                       </form>
                           </div>
                         <div class="col-2"></div>
@@ -46,7 +65,6 @@
             </div>
             <!-- CHIUSURA DELLA COLONNA CHE DEFINISCE I MARGINI -->
         </div>
-        <!-- FINE CORPO DELLA PAGINA -->
-    
+        <!-- FINE CORPO DELLA PAGINA --> 
     </body>
 </html>

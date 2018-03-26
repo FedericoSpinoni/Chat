@@ -83,7 +83,7 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `username`, `password`, `status`) VALUES
 (5, 'fedespino', '1234', 'offline'),
-(6, 'biancomichael', '5678', 'offline');
+(6, 'biancomichel', '5678', 'offline');
 
 --
 -- Indici per le tabelle scaricate

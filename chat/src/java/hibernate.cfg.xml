@@ -48,5 +48,6 @@ Contributor(s):
     <property name="hibernate.connection.password">app</property>
     <property name="hibernate.hbm2ddl.auto">validate</property>
     <property name="hibernate.show_sql">true</property>
+    <mapping class="com.entity.user"/>
   </session-factory>
 </hibernate-configuration>

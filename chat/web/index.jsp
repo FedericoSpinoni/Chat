@@ -32,10 +32,11 @@
                 <div class="row">
                         <div class="col-2"></div>
                         <div class="col-8">
-                    <form>
+                            
+                            <form action="loginToHome.jsp" method="POST">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Username</label>
-                          <input type="email" class="form-control" name="inputUsername" aria-describedby="emailHelp" placeholder="Enter username">
+                          <label for="exampleInput">Username</label>
+                          <input type="user" class="form-control" name="inputUsername"  placeholder="Enter username">
                           <small id="userHelp" class="form-text text-muted">Input your personal username, not your mail friend!</small>
                         </div>
                         <div class="form-group">
@@ -48,15 +49,7 @@
                           <label class="form-check-label" for="exampleCheck1">Check me out</label>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
-                        <%
-                            login l= null;
-                            /*
-                                if(l.verifyLogin("fedespino", "1234") == true)
-                                    codice per controllare nel database la presenza dell'user, tramite la funzione verifyLogin
-                                else 
-                                   out.print("error");
-                            */
-                        %>
+
                       </form>
                           </div>
                         <div class="col-2"></div>

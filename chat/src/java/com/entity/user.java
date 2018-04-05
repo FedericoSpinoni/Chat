@@ -26,6 +26,14 @@ public class user {
     private String password;
     private String status;
 
+    public user()
+    {
+        this.ID= 0;
+        this.username=null;
+        this.password=null;
+        this.status=null;
+        
+    }
     /**
      * @return the ID
      */

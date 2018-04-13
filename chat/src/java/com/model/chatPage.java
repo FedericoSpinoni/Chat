@@ -5,7 +5,7 @@
  */
 package com.model;
 
-import com.entity.chat;
+import com.entity.Chat;
 import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -19,15 +19,15 @@ public class chatPage {
     
     public void createChat()
     {
-        //N.B. --> E' ancora da inserire il meotodo per ricavare chi fa il login per mostrare determinate chat
+        //N.B. --> E' ancora da inserire il meotodo per ricavare chi fa il login per mostrare determinate Chat
         SessionFactory factory= session.getSessionFactory();
         Session s = factory.openSession(); // creo una sessione e la avvio
         
          try {  
-            List<chat> chats= s.createQuery("FROM chat").list(); //leggo la lista di users dalla tabella e la inserisco in una lista
-            for(chat c : chats){ //scorro la lista di utenti letti
+            List<Chat> chats= s.createQuery("FROM chat").list(); //leggo la lista di users dalla tabella e la inserisco in una lista
+            for(Chat c : chats){ //scorro la lista di utenti letti
 
-               System.out.print("User: " + c.getID());    // questo stamperà tutte le chat nella pagina jsp
+               System.out.print("User: " + c.getID());    // questo stamperà tutte le Chat nella pagina jsp
             }
         }
         catch(HibernateException e)

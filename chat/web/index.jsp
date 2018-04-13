@@ -33,15 +33,15 @@
                         <div class="col-2"></div>
                         <div class="col-8">
                             
-                            <form action="loginToHome.jsp" method="POST">
+                            <form action="${pageContext.request.contextPath}/loginServlet" method="POST">
                         <div class="form-group">
                           <label for="exampleInput">Username</label>
-                          <input type="user" class="form-control" name="inputUsername"  placeholder="Enter username">
+                          <input type="user" class="form-control" name="user"  placeholder="Enter username">
                           <small id="userHelp" class="form-text text-muted">Input your personal username, not your mail friend!</small>
                         </div>
                         <div class="form-group">
                           <label for="exampleInputPassword1">Password</label>
-                          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                          <input type="password" class="form-control" name="pass" placeholder="Password">
                           <small id="passHelp" class="form-text text-muted">I think it's like password1234 or ******</small>
                         </div>
                         <div class="form-check">

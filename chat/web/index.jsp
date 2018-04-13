@@ -4,8 +4,6 @@
     Author     : mike
 --%>
 
-<%@page import="javax.script.ScriptEngine"%>
-<%@page import="com.model.login"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

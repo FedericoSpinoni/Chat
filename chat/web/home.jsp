@@ -1,3 +1,17 @@
+<%-- 
+    Document   : home
+    Created on : 13-apr-2018, 9.48.48
+    Author     : mike
+--%>
+
+<%@page import="com.model.homeServlet"%>
+<%@page import="java.util.List"%>
+<%@page import="com.model.session"%>
+<%@page import="com.entity.Chat"%>
+<%@page import="org.hibernate.Session"%>
+<%@page import="org.hibernate.SessionFactory"%>
+<%@page import="java.io.PrintWriter"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>

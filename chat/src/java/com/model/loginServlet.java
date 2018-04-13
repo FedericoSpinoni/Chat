@@ -30,12 +30,10 @@ public class loginServlet extends HttpServlet {
          boolean found= false;
         String username = req.getParameter("user");
         String password = req.getParameter("pass");
-        System.out.println(username + " " + password);
-        
+               
         SessionFactory factory = session.getSessionFactory();
         Session s = factory.openSession(); // creo una sessione e la avvio
-        System.out.println("ok");
-           
+        
          List<User> users= s.createQuery("FROM User").list(); //leggo la lista di users dalla tabella e la inserisco in una lista
          for(User u : users){ //scorro la lista di utenti letti
             System.out.println(u.getUsername());
@@ -43,7 +41,8 @@ public class loginServlet extends HttpServlet {
             
             /*if(username.compareTo(u.getUsername()) == 0)
                 if(password.compareTo(u.getPassword()) == 0)
-                    resp.sendRedirect("home.jsp");*/
+                    resp.sendRedirect("home.jsp");
+            */
             if(username.equals(u.getUsername()) && password.equals(u.getPassword())) {
                 found= true;
             }

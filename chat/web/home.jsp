@@ -4,6 +4,13 @@
     Author     : mike
 --%>
 
+<%@page import="com.model.homeServlet"%>
+<%@page import="java.util.List"%>
+<%@page import="com.model.session"%>
+<%@page import="com.entity.Chat"%>
+<%@page import="org.hibernate.Session"%>
+<%@page import="org.hibernate.SessionFactory"%>
+<%@page import="java.io.PrintWriter"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,6 +19,7 @@
 	<title>Chat</title>
 </head>
 <body>
+    <form action="${pageContext.request.contextPath}/loginServlet" method="POST">
 	<div class="wrapper">
 		<div class="container-user">
 			<div class="profile">
@@ -19,17 +27,10 @@
 			</div>
 			<div class="contacts">
 				<div class="contact">Person</div>
-				<div class="contact">Person</div>
-				<div class="contact">Person</div>
-				<div class="contact">Person</div>
-				<div class="contact">Person</div>
-				<div class="contact">Person</div>
-				<div class="contact">Person</div>
-				<div class="contact">Person</div>
-				<div class="contact">Person</div>
-				<div class="contact">Person</div>
-				<div class="contact">Person</div>
-				<div class="contact">Person</div>
+				<%
+                                    homeServlet h= null;
+                                    h.getContact();
+                                %>
 			</div>
 		</div>
 		<div class="container-chat">
@@ -47,10 +48,12 @@
 				<label class="message receiver">Oila</label>
 				<label class="message receiver">Oila</label>
 			</div>
+                    
 			<div class="send">
 
 			</div>
 		</div>
-	</div>
-</body>
+            </div>
+        </form>
+    </body>
 </html> 

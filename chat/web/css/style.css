@@ -1,5 +1,7 @@
+/* Inizializzazione pagina css */ 
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
+/* Inizializzazione pagina css */ 
 * {
     font-family: 'Roboto', sans-serif;
 	padding: 0;
@@ -7,23 +9,21 @@
 	border: 0;
 }
 
+/* Inizializzazione pagina css */ 
 html, body, .wrapper {
     width: 100%;
     height: 100%;
 }
 
+/* Fasce bianche laterali */
 .wrapper {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-.container-chat {
-    overflow: hidden;
-    height: 100%;
-    position: relative;
-}
-
+/*-----------------------------------------------------------------*/
+/* COLONNA SINISTRA */ 
 .container-user {
     float: left;
     width: 300px;
@@ -31,62 +31,174 @@ html, body, .wrapper {
 	position: relative;
 }
 
+/*-----------------------------------*/
+/* Profilo personale */
 .profile {
-    height: 50px;
-    background: rgb(255,255,0,0.7);
+    border: 1px solid #e1eaea;
+    height: 70px;
+    background: #127CC0;
+	position: absolute;
 	left: 0;
 	right: 0;
 	top: 0;
 }
 
-.contacts {
-	background: rgb(255,0,0,0.7);
-	overflow-y: scroll;
-    padding: 15px;
-	box-sizing: border-box;
+/* Immagine del profilo e contatto (img-profile), Immagine del contatto (img-contact) */
+.img-profile, .img-contact {
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+    border-radius: 25px;
+    vertical-align: middle;
+}
+/* Fine profilo personale */
+/*-----------------------------------*/
+
+/*-----------------------------------*/
+/* Contenitore esterno barra di ricerca */
+.search {
+    border: 1px solid #e1eaea;
+    height: 40px;
+    background-color: #59a3d2;
+    width: 100%;
     position: absolute;
-    bottom: 0;
     left: 0;
     right: 0;
-    top: 50px;
+    top: 70px;
 }
 
+/* Contenitore interno barra di ricerca */
+.search-container {
+    width: 100%;
+    padding-right: 75px;
+    box-sizing: border-box;
+}
+
+/* Immagine barra di ricerca */
+.img-search {
+    width: 20px;
+    height: 20px;
+    margin: 10px;
+    border-radius: 10px;
+    position: absolute;
+}
+
+/* Barra di ricerca */
+.search-text {
+    border-radius: 20px;
+    width: 100%;
+    height: 20px;
+    margin: 10px 0;
+    margin-left: 40px;
+    outline: 0;
+    padding: 0 10px;
+}
+/* Fine barra di ricerca */
+/*-----------------------------------*/
+
+/*-----------------------------------*/
+/* Rubrica dei contatti */
+.contacts {
+    border: 1px solid #e1eaea;
+	height: 100%;
+	background: #127CC0;
+	overflow-y: scroll;
+    padding: 15px;
+	padding-top: 120px;
+	box-sizing: border-box;
+}
+
+/* Singolo contatto di rubrica */
+.contact {
+    width: 100%;
+    margin-top: 5px;
+    background: rgba(255,255,255);
+	border-radius: 15px;
+	margin-right: 5px;
+}
+/* Fine rubrica */
+/*-----------------------------------*/
+
+/* Fine colonna sinistra */
+/*-----------------------------------------------------------------*/
+
+
+/*-----------------------------------------------------------------*/
+/* COLONNA DESTRA */
+.container-chat {
+    overflow: hidden;
+    height: 100%;
+    position: relative;
+}
+
+/*-----------------------------------*/
+/* Profilo del contatto della chat */
 .person {
-    height: 50px;
-    background: rgb(0,255,0,0.7);
+    border: 1px solid #e1eaea;
+    height: 70px;
+    background: #59a3d2;
 }
+/* Fine profilo contatto */
+/*-----------------------------------*/
 
+/*-----------------------------------*/
+/* Chat */ 
 .chat {
-    background: rgb(0,0,255,0.7);
+    border: 1px solid #e1eaea;
+    background: #f2f2f2;
     overflow-y: scroll;
     position: absolute;
     bottom: 50px;
     left: 0;
     right: 0;
-    top: 50px;
+    top: 70px;
+    padding-top: 15px;
+    padding-bottom: 20px;
+    display: inline-block;
 }
 
+/* Messaggio generico */
+.message {
+    width: 100%;    
+}
+
+.message:after {
+    display: table;
+    content: "";
+    clear: both;
+}
+
+/* Messagio inviato (sender) e ricevuto (receiver) */
 .sender, .receiver {
     border-radius: 10px;
     padding: 5px;
-    margin: 10px 20px;
-    width: 50%;
-    background: rgb(255,255,255,0.7);
+    margin: 2px 20px;
+    box-shadow: 0 3px 6px rgba(155, 79, 27, 0.16), 0 3px 6px rgba(155, 79, 27,0.23);
+    padding: 0.5em 1em;
+    max-width: 50%;
 }
 
+/* Messaggio inviato */
 .sender {
+    border-top-right-radius: 0;  
     float: right;
-    border-top-right-radius: 0;
+    background-color: #c4deef;
 }
 
+/* Messaggio ricevuto */
 .receiver {
+    border-top-left-radius: 0;
     float: left;
-    border-top-left-radius: 0;  
+    background: rgb(255,255,255);
 }
+/* Fine chat */
+/*-----------------------------------*/
 
+/*-----------------------------------*/
+/* Contenitore esterno per inserimento messaggio */
 .send {
-    background: rgb(255,255,0,0.7);
-    height: 50px;
+    background: #59a3d2;
+    height: 60px;
     width: 100%;
     position: absolute;
     bottom: 0;
@@ -94,20 +206,60 @@ html, body, .wrapper {
     right: 0;
 }
 
-.message {
-    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-    padding: 0.5em 1em;
-}
-
-.contact {
-    height: 50px;
+/* Contenitore interno per inserimento messaggio */
+.text-message-container {
+    border: 1px solid #e1eaea;
     width: 100%;
-    border-top: 5px solid rgb(255,0,0,0.7);
-    background: rgba(255,255,255);
-	border-radius: 10px;
-	margin-right: 5px;
+    padding-right: 100px;
+    box-sizing: border-box;
 }
 
+/* Inserimento messaggio */
+.text-message {
+    border-radius: 20px;
+    width: 100%;
+    padding: 0px 15px;
+    height: 40px;
+    margin: 10px;
+    outline: 0;
+}
+
+/* Contenitore per bottone di invio messaggio */
+.send-message {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background: #127CC0;
+    outline: 0;
+    border-radius: 20px;
+    float: right;
+    width: 40px;
+    height: 40px;
+    margin: 10px;
+}
+
+/* Immagine di invio messaggio */
+.img-send {
+    width: 80%;
+    height: 80%;
+    display: block;
+    margin: 0px auto;
+    padding-right: 3px;
+    padding-top: 4px;
+    text-align:center;
+}
+/* Fine inserimento */
+/*-----------------------------------*/
+
+/* Fine colonna destra */
+/*-----------------------------------------------------------------*/
+
+
+/*-----------------------------------------------------------------*/
+/* Altro */
+
+/* Scrollbar */
 /* width */
 ::-webkit-scrollbar {
     width: 5px;
@@ -128,8 +280,16 @@ html, body, .wrapper {
     background: #555; 
 }
 
+
+/*-----------------------------------------------------------------*/
+/* Media Screen */
 @media screen and (max-width: 640px) {
     .container-user {
         width: 150px;
+    }
+
+    .img-contact{
+        height: 30px;
+        width: 30px;
     }
 }

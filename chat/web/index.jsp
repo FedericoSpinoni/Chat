@@ -35,6 +35,11 @@
                         <input type="submit" name="submit" class="button" value="LOGIN" id="exampleCheck1">
                     </td>
                 </tr>
+                    <td>
+                        <br>
+                        <a href="register.jsp">Register</a>
+                    </td>
+                </tr>
                 <tr>
                     <td>
                         <br>

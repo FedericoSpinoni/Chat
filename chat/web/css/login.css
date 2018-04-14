@@ -112,3 +112,14 @@
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+  color: #59a3d2;
+  font-size: 17px;
+}
+
+a:hover {
+  color: #127CC0;
+}

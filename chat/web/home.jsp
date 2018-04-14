@@ -30,21 +30,23 @@
 					<input type="text" class="search-text">
 				</div>
 			</div>
-			<div class="contacts">
-				<div class="contact"><img src="img/profile.jpg" class="img-contact">
-					<%
-						homeServlet h = new homeServlet();
-						h.getContact();
-					%>
+			<div class="contacts-container">
+				<div class="contacts">
+					<div class="contact"><img src="img/profile.jpg" class="img-contact">
+						<%
+							homeServlet h = new homeServlet();
+							h.getContact();
+						%>
+					</div>
+					<div class="contact"><img src="img/profile.jpg" class="img-contact"></div>
+					<div class="contact"><img src="img/profile.jpg" class="img-contact"></div>
+					<div class="contact"><img src="img/profile.jpg" class="img-contact"></div>
+					<div class="contact"><img src="img/profile.jpg" class="img-contact"></div>
+					<div class="contact"><img src="img/profile.jpg" class="img-contact"></div>
+					<div class="contact"><img src="img/profile.jpg" class="img-contact"></div>
+					<div class="contact"><img src="img/profile.jpg" class="img-contact"></div>
+					<div class="contact"><img src="img/profile.jpg" class="img-contact"></div>
 				</div>
-				<div class="contact"><img src="img/profile.jpg" class="img-contact"></div>
-				<div class="contact"><img src="img/profile.jpg" class="img-contact"></div>
-				<div class="contact"><img src="img/profile.jpg" class="img-contact"></div>
-				<div class="contact"><img src="img/profile.jpg" class="img-contact"></div>
-				<div class="contact"><img src="img/profile.jpg" class="img-contact"></div>
-				<div class="contact"><img src="img/profile.jpg" class="img-contact"></div>
-				<div class="contact"><img src="img/profile.jpg" class="img-contact"></div>
-				<div class="contact"><img src="img/profile.jpg" class="img-contact"></div>
 			</div>
 		</div>
 		<div class="container-chat">
@@ -61,8 +63,8 @@
 			</div>
 			<div class="send">
 				<div class="text-message-container">
-					<input type="text" class="text-message">
-					<button class="send-message"><img src="img/send1.png" class="img-send"></button>
+					<input type="text" name="text-message" class="text-message">
+					<button type="submit" class="send-message"><img src="img/send1.png" class="img-send"></button>
 				</div>
 			</div>
 		</div>

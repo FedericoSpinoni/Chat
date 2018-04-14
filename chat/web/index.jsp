@@ -20,19 +20,19 @@
             <tbody>
                 <tr>
                     <td>
-                        <input type="text" name="username" class="font" id="userHelp" name="user" placeholder="Username">
+                        <input type="text" name="username" class="font" placeholder="Username">
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <br>
-                        <input type="password" name="password" class="font" id="passHelp" name="pass" placeholder="Password">
+                        <input type="password" name="password" class="font" placeholder="Password">
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <br>
-                        <input type="submit" name="submit" class="button" value="LOGIN" id="exampleCheck1">
+                        <input type="submit" name="submit" class="button" value="LOGIN">
                     </td>
                 </tr>
                     <td>

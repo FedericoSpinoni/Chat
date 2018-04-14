@@ -33,7 +33,7 @@
 			<div class="contacts">
 				<div class="contact"><img src="img/profile.jpg" class="img-contact">
 					<%
-						homeServlet h= null;
+						homeServlet h = new homeServlet();
 						h.getContact();
 					%>
 				</div>

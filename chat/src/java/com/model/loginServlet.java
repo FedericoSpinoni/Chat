@@ -28,8 +28,8 @@ public class loginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
          boolean found= false;
-        String username = req.getParameter("user");
-        String password = req.getParameter("pass");
+        String username = req.getParameter("username");
+        String password = req.getParameter("password");
                
         SessionFactory factory = session.getSessionFactory();
         Session s = factory.openSession(); // creo una sessione e la avvio

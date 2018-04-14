@@ -25,6 +25,11 @@ import org.hibernate.SessionFactory;
  */
 @WebServlet(name = "homeServlet", urlPatterns = {"/homeServlet"})
 public class homeServlet extends HttpServlet {
+
+    public homeServlet() {
+    }
+    
+    
  
     public void getContact(){
         /*

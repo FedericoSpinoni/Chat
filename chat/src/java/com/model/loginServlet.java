@@ -6,9 +6,11 @@
 package com.model;
 
 import com.entity.User;
+import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -44,11 +46,12 @@ public class loginServlet extends HttpServlet {
                     resp.sendRedirect("home.jsp");
             */
             if(username.equals(u.getUsername()) && password.equals(u.getPassword())) {
-                found= true;
+                RequestDispatcher rd = req.getRequestDispatcher("chatServlet");
+                rd.forward(req,resp);
             }
          }
        if(found == true)
-           resp.sendRedirect("home.jsp");
+           resp.sendRedirect("index.jsp");
     }
 
 }

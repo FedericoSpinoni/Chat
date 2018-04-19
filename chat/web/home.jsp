@@ -36,16 +36,9 @@
 						<%
 							homeServlet h = new homeServlet();
 							h.getContact();
+                                                        
 						%>
 					</div>
-					<div class="contact"><img src="img/profile.jpg" class="img-contact"></div>
-					<div class="contact"><img src="img/profile.jpg" class="img-contact"></div>
-					<div class="contact"><img src="img/profile.jpg" class="img-contact"></div>
-					<div class="contact"><img src="img/profile.jpg" class="img-contact"></div>
-					<div class="contact"><img src="img/profile.jpg" class="img-contact"></div>
-					<div class="contact"><img src="img/profile.jpg" class="img-contact"></div>
-					<div class="contact"><img src="img/profile.jpg" class="img-contact"></div>
-					<div class="contact"><img src="img/profile.jpg" class="img-contact"></div>
 				</div>
 			</div>
 		</div>

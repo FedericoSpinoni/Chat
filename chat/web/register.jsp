@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <form method="post">
+    <form action="${pageContext.request.contextPath}/registerServlet" method="post">
         <table class="table">
             <tbody>
                 <tr>

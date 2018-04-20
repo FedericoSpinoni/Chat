@@ -16,10 +16,10 @@ import javax.persistence.Table;
  *
  * @author mike
  */
-
 @Entity
 @Table(name = "user")
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int ID;
@@ -27,6 +27,8 @@ public class User {
     private String password;
 
     /**
+     * Return an id
+     *
      * @return the ID
      */
     public int getID() {
@@ -34,6 +36,8 @@ public class User {
     }
 
     /**
+     * Set an id
+     *
      * @param ID the ID to set
      */
     public void setID(int ID) {
@@ -41,6 +45,8 @@ public class User {
     }
 
     /**
+     * Return a username
+     *
      * @return the username
      */
     public String getUsername() {
@@ -48,6 +54,8 @@ public class User {
     }
 
     /**
+     * Set a username
+     *
      * @param username the username to set
      */
     public void setUsername(String username) {
@@ -55,6 +63,8 @@ public class User {
     }
 
     /**
+     * Return a password
+     *
      * @return the password
      */
     public String getPassword() {
@@ -62,12 +72,12 @@ public class User {
     }
 
     /**
+     * Set a password
+     *
      * @param password the password to set
      */
     public void setPassword(String password) {
         this.password = password;
     }
-
-
 
 }

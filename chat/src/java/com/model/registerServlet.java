@@ -7,7 +7,6 @@ package com.model;
 
 import com.entity.User;
 import java.io.IOException;
-import java.io.PrintWriter;
 import static java.lang.System.out;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
@@ -26,8 +25,17 @@ import org.hibernate.SessionFactory;
 @WebServlet(name = "registerServlet", urlPatterns = {"/registerServlet"})
 public class registerServlet extends HttpServlet {
 
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param req servlet request
+     * @param resp servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        
         super.doPost(req, resp); 
         
         String username = req.getParameter("username");
@@ -43,7 +51,8 @@ public class registerServlet extends HttpServlet {
                 rd.forward(req,resp);
             }
         }
-        User us= new User();
+        
+        User us = new User();
         us.setUsername(username);
         us.setPassword(password);
         s.beginTransaction();
@@ -53,9 +62,6 @@ public class registerServlet extends HttpServlet {
         factory.close();
         RequestDispatcher rd2 = req.getRequestDispatcher("home.jsp");
         rd2.forward(req,resp);
-        
-        
     }
-        
     
    }

@@ -15,15 +15,18 @@ import javax.persistence.Table;
  *
  * @author mike
  */
-@Entity 
-@Table (name = "message")
+@Entity
+@Table(name = "message")
 public class Message {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int ID;
     private String message;
 
     /**
+     * Return an id
+     *
      * @return the ID
      */
     public int getID() {
@@ -31,6 +34,8 @@ public class Message {
     }
 
     /**
+     * Set an id
+     *
      * @param ID the ID to set
      */
     public void setID(int ID) {
@@ -38,6 +43,8 @@ public class Message {
     }
 
     /**
+     * Return a message
+     *
      * @return the Message
      */
     public String getMessage() {
@@ -45,9 +52,12 @@ public class Message {
     }
 
     /**
+     * Set a message
+     *
      * @param message the Message to set
      */
     public void setMessage(String message) {
         this.message = message;
     }
+
 }

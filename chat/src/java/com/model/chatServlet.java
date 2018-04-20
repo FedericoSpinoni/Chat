@@ -8,7 +8,6 @@ package com.model;
 import com.entity.Chat;
 import java.io.IOException;
 import java.io.PrintWriter;
-import static java.lang.System.out;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -42,17 +41,18 @@ public class chatServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>"
                     + "<head>"
-                        + "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\">"
-                        + "<title>Homepage</title>"
+                    + "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\">"
+                    + "<title>Homepage</title>"
                     + "</head>"
                     + "<body>"
                     + ""
                     + "");
+
             SessionFactory factory = session.getSessionFactory();
             Session s = factory.openSession(); // creo una sessione e la avvio
-            List<Chat> chats= s.createQuery("FROM Chat").list(); //leggo la lista di users dalla tabella e la inserisco in una lista
-            for(Chat c : chats){ //scorro la lista di utenti letti
-                out.println("<div class=\"contact\">"+c.getId_receiver()+"<img src=\"img/profile.jpg\" class=\"img-contact\"></div>");
+            List<Chat> chats = s.createQuery("FROM Chat").list(); //leggo la lista di users dalla tabella e la inserisco in una lista
+            for (Chat c : chats) { //scorro la lista di utenti letti
+                out.println("<div class=\"contact\">" + c.getId_receiver() + "<img src=\"img/profile.jpg\" class=\"img-contact\"></div>");
             }
             out.println("</body>"
                     + ""
@@ -60,7 +60,6 @@ public class chatServlet extends HttpServlet {
                     + ""
                     + ""
                     + "");
-            
         }
     }
 

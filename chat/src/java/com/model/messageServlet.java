@@ -7,13 +7,11 @@ package com.model;
 
 import com.entity.Message;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -24,15 +22,23 @@ import org.hibernate.SessionFactory;
 @WebServlet(name = "messageServlet", urlPatterns = {"/messageServlet"})
 public class messageServlet extends HttpServlet {
 
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param req servlet request
+     * @param resp servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp); 
-        String msg= req.getParameter("text-message");
+        super.doPost(req, resp);
+        String msg = req.getParameter("text-message");
         String receiver = req.getParameter("id_receiver");
-        
+
         SessionFactory factory = session.getSessionFactory();
         Session s = factory.openSession(); // creo una sessione e la avvio
-        
+
         Message m = new Message();
         m.setMessage(msg);
         s.beginTransaction();
@@ -40,9 +46,7 @@ public class messageServlet extends HttpServlet {
         s.getTransaction().commit();
         s.close();
         factory.close();
-        
-        
-        
+
     }
-    
+
 }

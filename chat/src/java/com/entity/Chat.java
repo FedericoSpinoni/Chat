@@ -15,10 +15,10 @@ import javax.persistence.Table;
  *
  * @author mike
  */
-
 @Entity
-@Table (name = "chat")
+@Table(name = "chat")
 public class Chat {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int ID;
@@ -27,6 +27,8 @@ public class Chat {
     private int id_message;
 
     /**
+     * Return an id
+     *
      * @return the ID
      */
     public int getID() {
@@ -34,6 +36,8 @@ public class Chat {
     }
 
     /**
+     * Set an id
+     *
      * @param ID the ID to set
      */
     public void setID(int ID) {
@@ -41,6 +45,8 @@ public class Chat {
     }
 
     /**
+     * Return an id_sender
+     *
      * @return the id_sender
      */
     public int getId_sender() {
@@ -48,6 +54,8 @@ public class Chat {
     }
 
     /**
+     * Set an id_sender
+     *
      * @param id_sender the id_sender to set
      */
     public void setId_sender(int id_sender) {
@@ -55,6 +63,8 @@ public class Chat {
     }
 
     /**
+     * return an id_receiver
+     *
      * @return the id_receiver
      */
     public int getId_receiver() {
@@ -62,6 +72,8 @@ public class Chat {
     }
 
     /**
+     * Set an id_receiver
+     *
      * @param id_receiver the id_receiver to set
      */
     public void setId_receiver(int id_receiver) {
@@ -69,6 +81,8 @@ public class Chat {
     }
 
     /**
+     * Return an id_message
+     *
      * @return the id_message
      */
     public int getId_message() {
@@ -76,10 +90,12 @@ public class Chat {
     }
 
     /**
+     * Set an id_message
+     *
      * @param id_message the id_message to set
      */
     public void setId_message(int id_message) {
         this.id_message = id_message;
     }
-    
+
 }

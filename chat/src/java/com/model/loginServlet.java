@@ -16,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -32,26 +33,27 @@ public class loginServlet extends HttpServlet {
          boolean found= false;
         String username = req.getParameter("username");
         String password = req.getParameter("password");
-               
+ 
         SessionFactory factory = session.getSessionFactory();
         Session s = factory.openSession(); // creo una sessione e la avvio
         
          List<User> users= s.createQuery("FROM User").list(); //leggo la lista di users dalla tabella e la inserisco in una lista
          for(User u : users){ //scorro la lista di utenti letti
-            System.out.println(u.getUsername());
-            System.out.println(u.getPassword());
-            
-            /*if(username.compareTo(u.getUsername()) == 0)
-                if(password.compareTo(u.getPassword()) == 0)
-                    resp.sendRedirect("home.jsp");
-            */
+
             if(username.equals(u.getUsername()) && password.equals(u.getPassword())) {
+                
+                HttpSession oldSession= req.getSession(false);
+                if(oldSession != null)
+                    oldSession.invalidate();
+                HttpSession currentSession = req.getSession();
+                currentSession.setAttribute("id", u.getID());
+                currentSession.setAttribute("user", username);
+                currentSession.setAttribute("pass", password);
+                
                 RequestDispatcher rd = req.getRequestDispatcher("chatServlet");
                 rd.forward(req,resp);
             }
          }
-       if(found == true)
            resp.sendRedirect("index.jsp");
     }
-
 }

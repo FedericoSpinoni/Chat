@@ -39,8 +39,6 @@ public class registerServlet extends HttpServlet {
         for(User u : users){
             if(username.equals(u.getUsername())){
                 out.println("Error, already exist!");
-                RequestDispatcher rd = req.getRequestDispatcher("index.jsp");
-                rd.forward(req,resp);
             }
         }
         User us= new User();
@@ -49,12 +47,7 @@ public class registerServlet extends HttpServlet {
         s.beginTransaction();
         s.save(us);
         s.getTransaction().commit();
-        s.close();
-        factory.close();
-        RequestDispatcher rd2 = req.getRequestDispatcher("home.jsp");
-        rd2.forward(req,resp);
-        
-        
+        resp.sendRedirect("home.jsp");
     }
         
     

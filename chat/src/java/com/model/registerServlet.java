@@ -16,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -41,12 +42,19 @@ public class registerServlet extends HttpServlet {
                 out.println("Error, already exist!");
             }
         }
+        HttpSession oldSession= req.getSession(false);
+        if(oldSession != null)
+            oldSession.invalidate();
+        HttpSession currentSession = req.getSession();
+        currentSession.setAttribute("user", username);
+        currentSession.setAttribute("pass", password);
         User us= new User();
         us.setUsername(username);
         us.setPassword(password);
         s.beginTransaction();
         s.save(us);
         s.getTransaction().commit();
+        
         resp.sendRedirect("home.jsp");
     }
         

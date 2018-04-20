@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.System.out;
 import java.util.List;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,37 +35,7 @@ public class chatServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>"
-                    + "<head>"
-                        + "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\">"
-                        + "<title>Homepage</title>"
-                    + "</head>"
-                    + "<body>"
-                    + ""
-                    + "");
-            SessionFactory factory = session.getSessionFactory();
-            Session s = factory.openSession(); // creo una sessione e la avvio
-            List<Chat> chats= s.createQuery("FROM Chat").list(); //leggo la lista di users dalla tabella e la inserisco in una lista
-            for(Chat c : chats){ //scorro la lista di utenti letti
-                out.println("<div class=\"contact\">"+c.getId_receiver()+"<img src=\"img/profile.jpg\" class=\"img-contact\"></div>");
-            }
-            out.println("</body>"
-                    + ""
-                    + ""
-                    + ""
-                    + ""
-                    + "");
-            
-        }
-    }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -76,7 +47,13 @@ public class chatServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        SessionFactory factory = session.getSessionFactory();
+        Session s = factory.openSession(); // creo una sessione e la avvio
+        List<Chat> chats = s.createQuery("FROM Chat").list(); //leggo la lista di users dalla tabella e la inserisco in una lista
+        request.setAttribute("persons", chats);
+        String nextPage = "home.jsp";
+        RequestDispatcher dispatch = request.getRequestDispatcher(nextPage);
+        dispatch.forward(request, response);
     }
 
     /**
@@ -90,7 +67,7 @@ public class chatServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
     }
 
     /**

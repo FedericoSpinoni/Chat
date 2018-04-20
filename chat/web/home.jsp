@@ -4,7 +4,7 @@
     Author     : mike
 --%>
 
-<%@page import="com.model.homeServlet"%>
+<%@page import="com.model.chatServlet"%>
 <%@page import="java.util.List"%>
 <%@page import="com.model.session"%>
 <%@page import="com.entity.Chat"%>
@@ -32,12 +32,8 @@
 			</div>
 			<div class="contacts-container">
 				<div class="contacts">
-					<div class="contact"><img src="img/profile.jpg" class="img-contact">
-						<%
-							homeServlet h = new homeServlet();
-							h.getContact();
-                                                        
-						%>
+					<div class="contact" value="<%= request.getParameter("persons")%>">
+                                            <img src="img/profile.jpg" class="img-contact">						
 					</div>
 				</div>
 			</div>

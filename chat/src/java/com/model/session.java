@@ -18,7 +18,7 @@ import org.hibernate.SessionFactory;
 public class session {
 
     private static final SessionFactory sessionFactory;
-    
+
     static {
         try {
             // Create the SessionFactory from standard (hibernate.cfg.xml) 
@@ -30,12 +30,24 @@ public class session {
             throw new ExceptionInInitializerError(ex);
         }
     }
-    
+
+    /**
+     * Return the session
+     *
+     * @return the sessionFactory
+     */
     public static SessionFactory getSessionFactory() {
         return sessionFactory;
     }
 
+    /**
+     * Create the query
+     *
+     * @param from_Employee
+     * @return
+     */
     static Object createQuery(String from_Employee) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
 }

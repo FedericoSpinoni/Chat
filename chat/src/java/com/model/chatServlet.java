@@ -51,7 +51,7 @@ public class chatServlet extends HttpServlet {
         Session s = factory.openSession(); // creo una sessione e la avvio
         List<Chat> chats = s.createQuery("FROM Chat").list(); //leggo la lista di users dalla tabella e la inserisco in una lista
         request.setAttribute("persons", chats);
-        String nextPage = "home.jsp";
+        String nextPage = "/Web Pages/home.jsp";
         RequestDispatcher dispatch = request.getRequestDispatcher(nextPage);
         dispatch.forward(request, response);
     }
@@ -67,7 +67,13 @@ public class chatServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+         SessionFactory factory = session.getSessionFactory();
+        Session s = factory.openSession(); // creo una sessione e la avvio
+        List<Chat> chats = s.createQuery("FROM Chat").list(); //leggo la lista di users dalla tabella e la inserisco in una lista
+        request.setAttribute("persons", chats);
+        String nextPage = "/home.jsp";
+        RequestDispatcher dispatch = request.getRequestDispatcher(nextPage);
+        dispatch.forward(request, response);
     }
 
     /**

@@ -35,6 +35,43 @@
 					<div class="contact" value="<%= request.getParameter("persons")%>">
                                             <img src="img/profile.jpg" class="img-contact">						
 					</div>
+                                            <div class="contact" value="<%= request.getParameter("persons")%>">
+                                            <img src="img/profile.jpg" class="img-contact">						
+					</div>
+                                            <div class="contact" value="<%= request.getParameter("persons")%>">
+                                            <img src="img/profile.jpg" class="img-contact">						
+					</div>
+                                            <div class="contact" value="<%= request.getParameter("persons")%>">
+                                            <img src="img/profile.jpg" class="img-contact">						
+					</div>
+                                            <div class="contact" value="<%= request.getParameter("persons")%>">
+                                            <img src="img/profile.jpg" class="img-contact">						
+					</div>
+                                            <div class="contact" value="<%= request.getParameter("persons")%>">
+                                            <img src="img/profile.jpg" class="img-contact">						
+					</div>
+                                            <div class="contact" value="<%= request.getParameter("persons")%>">
+                                            <img src="img/profile.jpg" class="img-contact">						
+					</div>
+                                            <div class="contact" value="<%= request.getParameter("persons")%>">
+                                            <img src="img/profile.jpg" class="img-contact">						
+					</div>
+                                            <div class="contact" value="<%= request.getParameter("persons")%>">
+                                            <img src="img/profile.jpg" class="img-contact">						
+					</div>
+                                            <div class="contact" value="<%= request.getParameter("persons")%>">
+                                            <img src="img/profile.jpg" class="img-contact">						
+					</div>
+                                            <div class="contact" value="<%= request.getParameter("persons")%>">
+                                            <img src="img/profile.jpg" class="img-contact">						
+					</div>
+                                            <div class="contact" value="<%= request.getParameter("persons")%>">
+                                            <img src="img/profile.jpg" class="img-contact">						
+					</div>
+                                            <div class="contact" value="<%= request.getParameter("persons")%>">
+                                            <img src="img/profile.jpg" class="img-contact">						
+					</div>
+                                            
 				</div>
 			</div>
 		</div>
@@ -44,6 +81,15 @@
 			</div>
 			<div class="chat">
 				<div class="message">
+					<div class=" sender">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis magna massa, dapibus vitae rutrum semper, aliquam vel dolor. Nulla vel viverra ligula, quis eleifend augue. Phasellus fermentum felis ac maximus gravida. Etiam id urna at tellus posuere suscipit. In eget bibendum velit, eget porta orci. Cras et efficitur augue. Fusce turpis purus, ultrices ac venenatis mattis, congue nec sapien. Duis lectus diam, vehicula id elementum ac, molestie et dolor. Nullam vitae quam et odio tempor tempor eget non odio. Phasellus varius mollis sem ac ultrices.</div>
+				</div>
+                            <div class="message">
+					<div class=" sender">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis magna massa, dapibus vitae rutrum semper, aliquam vel dolor. Nulla vel viverra ligula, quis eleifend augue. Phasellus fermentum felis ac maximus gravida. Etiam id urna at tellus posuere suscipit. In eget bibendum velit, eget porta orci. Cras et efficitur augue. Fusce turpis purus, ultrices ac venenatis mattis, congue nec sapien. Duis lectus diam, vehicula id elementum ac, molestie et dolor. Nullam vitae quam et odio tempor tempor eget non odio. Phasellus varius mollis sem ac ultrices.</div>
+				</div>
+                            <div class="message">
+					<div class=" sender">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis magna massa, dapibus vitae rutrum semper, aliquam vel dolor. Nulla vel viverra ligula, quis eleifend augue. Phasellus fermentum felis ac maximus gravida. Etiam id urna at tellus posuere suscipit. In eget bibendum velit, eget porta orci. Cras et efficitur augue. Fusce turpis purus, ultrices ac venenatis mattis, congue nec sapien. Duis lectus diam, vehicula id elementum ac, molestie et dolor. Nullam vitae quam et odio tempor tempor eget non odio. Phasellus varius mollis sem ac ultrices.</div>
+				</div>
+                            <div class="message">
 					<div class=" sender">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis magna massa, dapibus vitae rutrum semper, aliquam vel dolor. Nulla vel viverra ligula, quis eleifend augue. Phasellus fermentum felis ac maximus gravida. Etiam id urna at tellus posuere suscipit. In eget bibendum velit, eget porta orci. Cras et efficitur augue. Fusce turpis purus, ultrices ac venenatis mattis, congue nec sapien. Duis lectus diam, vehicula id elementum ac, molestie et dolor. Nullam vitae quam et odio tempor tempor eget non odio. Phasellus varius mollis sem ac ultrices.</div>
 				</div>
 				<div class="message">

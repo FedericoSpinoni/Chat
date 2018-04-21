@@ -45,9 +45,11 @@ public class loginServlet extends HttpServlet {
                 if(password.compareTo(u.getPassword()) == 0)
                     resp.sendRedirect("home.jsp");
             */
+            
             if(username.equals(u.getUsername()) && password.equals(u.getPassword())) {
                 RequestDispatcher rd = req.getRequestDispatcher("chatServlet");
                 rd.forward(req,resp);
+                return;
             }
          }
        if(found == true)

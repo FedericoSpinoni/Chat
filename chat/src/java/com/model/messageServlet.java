@@ -5,13 +5,16 @@
  */
 package com.model;
 
+import com.entity.Chat;
 import com.entity.Message;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -39,11 +42,27 @@ public class messageServlet extends HttpServlet {
         SessionFactory factory = session.getSessionFactory();
         Session s = factory.openSession(); // creo una sessione e la avvio
 
-        Message m = new Message();
+        HttpSession currentSession = req.getSession();
+        String myId = (String) currentSession.getAttribute("id");
+        
+        List<Message> messages = s.createQuery("FROM Message").list();
+       
+        Message m = messages.get(messages.size());
+        
         m.setMessage(msg);
         s.beginTransaction();
         s.save(m);
         s.getTransaction().commit();
+        
+        Chat c = new Chat();
+        //c.setId_receiver(receiver);
+        //c.setId_sender(myId);
+        //c.setId_message(0); -> far scorrere i messaggi per ottenere l'ID dell'ultimo
+        //s.beginTransaction();
+        //s.save(c);
+        //s.getTransaction().commit();
+        
+        
         s.close();
         factory.close();
 

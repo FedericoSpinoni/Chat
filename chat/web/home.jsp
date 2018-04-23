@@ -4,7 +4,6 @@
     Author     : mike
 --%>
 
-<%@page import="com.model.homeServlet"%>
 <%@page import="java.util.List"%>
 <%@page import="com.model.session"%>
 <%@page import="com.entity.Chat"%>
@@ -30,17 +29,20 @@
 					<input type="text" class="search-text">
 				</div>
 			</div>
+                    
+                    <form action="${pageContext.request.contextPath}/showMessageServlet" method="post">
 			<div class="contacts-container">
 				<div class="contacts">
 					<div class="contact"><img src="img/profile.jpg" class="img-contact">
 						<%
-							homeServlet h = new homeServlet();
-							h.getContact();
+							// dare un id ad ogni chat stampata
                                                         
 						%>
 					</div>
 				</div>
 			</div>
+                    </form>
+                                        
 		</div>
 		<div class="container-chat">
 			<div class="person">

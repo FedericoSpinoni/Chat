@@ -27,9 +27,9 @@
 	<div class="wrapper">
 		<div class="container-user">
 			<div class="profile">
-                            <img src="img/profile.jpg" class="img-profile"><br>
+                            <img src="img/profile.jpg" class="img-profile">
                             <%User u = (User)session.getAttribute("currentLogged");%>
-                            <p>Welcome <%= u.getUsername() + " @" + u.getID() %></p>
+                            <p><%= " @" + u.getUsername() %></p>
 			</div>
 			<div class="search">
 				<div class="search-container">

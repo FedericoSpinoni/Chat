@@ -4,6 +4,10 @@
     Author     : mike
 --%>
 
+<<<<<<< HEAD
+=======
+<%@page import="com.model.chatServlet"%>
+>>>>>>> Home
 <%@page import="java.util.List"%>
 <%@page import="com.model.session"%>
 <%@page import="com.entity.Chat"%>
@@ -25,13 +29,16 @@
 			</div>
 			<div class="search">
 				<div class="search-container">
-					<img src="img/search.png" class="img-search">
+                                    <form action="" method="post">
+                                        <button type="submit"><img src="img/search.png" class="img-search"></button>
 					<input type="text" class="search-text">
+                                    </form>
 				</div>
 			</div>
                     
                     <form action="${pageContext.request.contextPath}/showMessageServlet" method="post">
 			<div class="contacts-container">
+<<<<<<< HEAD
 				<div class="contacts">
 					<div class="contact"><img src="img/profile.jpg" class="img-contact">
 						<%
@@ -39,6 +46,39 @@
                                                         
 						%>
 					</div>
+=======
+                                <div class="contacts">
+					<button class="contact" value="<%= request.getParameter("persons")%>">
+                                            <img src="img/profile.jpg" class="img-contact">						
+					</button>
+                                        <button class="contact" value="<%= request.getParameter("persons")%>">
+                                            <img src="img/profile.jpg" class="img-contact">						
+					</button>
+                                        <button class="contact" value="<%= request.getParameter("persons")%>">
+                                            <img src="img/profile.jpg" class="img-contact">						
+					</button>
+                                        <button class="contact" value="<%= request.getParameter("persons")%>">
+                                            <img src="img/profile.jpg" class="img-contact">						
+					</button>
+                                        <button class="contact" value="<%= request.getParameter("persons")%>">
+                                            <img src="img/profile.jpg" class="img-contact">						
+					</button>
+                                        <button class="contact" value="<%= request.getParameter("persons")%>">
+                                            <img src="img/profile.jpg" class="img-contact">						
+					</button>
+                                        <button class="contact" value="<%= request.getParameter("persons")%>">
+                                            <img src="img/profile.jpg" class="img-contact">						
+					</button>
+                                        <button class="contact" value="<%= request.getParameter("persons")%>">
+                                            <img src="img/profile.jpg" class="img-contact">						
+					</button>
+                                        <button class="contact" value="<%= request.getParameter("persons")%>">
+                                            <img src="img/profile.jpg" class="img-contact">						
+					</button>
+                                        <button class="contact" value="<%= request.getParameter("persons")%>">
+                                            <img src="img/profile.jpg" class="img-contact">						
+					</button>                                                                                                                              
+>>>>>>> Home
 				</div>
 			</div>
                     </form>
@@ -49,7 +89,23 @@
 				<img src="img/profile.jpg" class="img-profile">
 			</div>
 			<div class="chat">
+                            <!--<script>
+                                $(document).on("click", "#somebutton", function() { // When HTML DOM "click" event is invoked on element with ID "somebutton", execute the following function...
+                                $.get("someservlet", function(responseText) {   // Execute Ajax GET request on URL of "someservlet" and execute the following function with Ajax response text...
+                                $("#somediv").text(responseText);           // Locate HTML DOM element with ID "somediv" and set its text content with the response text.
+                                    });
+                                });
+                            </script>-->
 				<div class="message">
+					<div class=" sender">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis magna massa, dapibus vitae rutrum semper, aliquam vel dolor. Nulla vel viverra ligula, quis eleifend augue. Phasellus fermentum felis ac maximus gravida. Etiam id urna at tellus posuere suscipit. In eget bibendum velit, eget porta orci. Cras et efficitur augue. Fusce turpis purus, ultrices ac venenatis mattis, congue nec sapien. Duis lectus diam, vehicula id elementum ac, molestie et dolor. Nullam vitae quam et odio tempor tempor eget non odio. Phasellus varius mollis sem ac ultrices.</div>
+				</div>
+                            <div class="message">
+					<div class=" sender">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis magna massa, dapibus vitae rutrum semper, aliquam vel dolor. Nulla vel viverra ligula, quis eleifend augue. Phasellus fermentum felis ac maximus gravida. Etiam id urna at tellus posuere suscipit. In eget bibendum velit, eget porta orci. Cras et efficitur augue. Fusce turpis purus, ultrices ac venenatis mattis, congue nec sapien. Duis lectus diam, vehicula id elementum ac, molestie et dolor. Nullam vitae quam et odio tempor tempor eget non odio. Phasellus varius mollis sem ac ultrices.</div>
+				</div>
+                            <div class="message">
+					<div class=" sender">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis magna massa, dapibus vitae rutrum semper, aliquam vel dolor. Nulla vel viverra ligula, quis eleifend augue. Phasellus fermentum felis ac maximus gravida. Etiam id urna at tellus posuere suscipit. In eget bibendum velit, eget porta orci. Cras et efficitur augue. Fusce turpis purus, ultrices ac venenatis mattis, congue nec sapien. Duis lectus diam, vehicula id elementum ac, molestie et dolor. Nullam vitae quam et odio tempor tempor eget non odio. Phasellus varius mollis sem ac ultrices.</div>
+				</div>
+                            <div class="message">
 					<div class=" sender">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis magna massa, dapibus vitae rutrum semper, aliquam vel dolor. Nulla vel viverra ligula, quis eleifend augue. Phasellus fermentum felis ac maximus gravida. Etiam id urna at tellus posuere suscipit. In eget bibendum velit, eget porta orci. Cras et efficitur augue. Fusce turpis purus, ultrices ac venenatis mattis, congue nec sapien. Duis lectus diam, vehicula id elementum ac, molestie et dolor. Nullam vitae quam et odio tempor tempor eget non odio. Phasellus varius mollis sem ac ultrices.</div>
 				</div>
 				<div class="message">

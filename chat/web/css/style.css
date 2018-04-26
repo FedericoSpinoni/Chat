@@ -75,13 +75,21 @@ html, body, .wrapper {
     box-sizing: border-box;
 }
 
-/* Immagine barra di ricerca */
-.img-search {    
+/* Bottone barra di ricerca */
+.search-button {    
     width: 20px;
     height: 20px;
     margin: 10px;
     border-radius: 10px;
     position: absolute;
+    cursor: pointer;
+    background: none;
+}
+
+/* Immagine barra di ricerca */
+.img-search {
+    width: 100%;
+    height: 100%;
 }
 
 /* Barra di ricerca */
@@ -89,7 +97,7 @@ html, body, .wrapper {
     border-radius: 20px;
     width: 100%;
     height: 20px;
-    
+    margin: 10px 0;
     margin-left: 40px;
     outline: 0;
     padding: 0 10px;

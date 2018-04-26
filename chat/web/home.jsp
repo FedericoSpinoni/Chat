@@ -16,7 +16,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css?v=1">
 	<title>Chat</title>
 </head>
 <body>
@@ -34,7 +34,7 @@
 			<div class="search">
 				<div class="search-container">
                                     <form action="" method="post">
-                                        <button type="submit"><img src="img/search.png" class="img-search"></button>
+                                        <button type="submit" class="search-button"><img src="img/search.png" class="img-search"></button>
 					<input type="text" class="search-text">
                                     </form>
 				</div>

@@ -4,10 +4,8 @@
     Author     : mike
 --%>
 
-<<<<<<< HEAD
-=======
 <%@page import="com.model.chatServlet"%>
->>>>>>> Home
+<%@page import="com.entity.User"%>
 <%@page import="java.util.List"%>
 <%@page import="com.model.session"%>
 <%@page import="com.entity.Chat"%>
@@ -22,10 +20,16 @@
 	<title>Chat</title>
 </head>
 <body>
+    
+    <div>
+        
+    </div>
 	<div class="wrapper">
 		<div class="container-user">
 			<div class="profile">
-				<img src="img/profile.jpg" class="img-profile">
+                            <img src="img/profile.jpg" class="img-profile"><br>
+                            <%User u = (User)session.getAttribute("currentLogged");%>
+                            <p>Welcome <%= u.getUsername() + " @" + u.getID() %></p>
 			</div>
 			<div class="search">
 				<div class="search-container">
@@ -38,7 +42,7 @@
                     
                     <form action="${pageContext.request.contextPath}/showMessageServlet" method="post">
 			<div class="contacts-container">
-<<<<<<< HEAD
+
 				<div class="contacts">
 					<div class="contact"><img src="img/profile.jpg" class="img-contact">
 						<%
@@ -46,39 +50,19 @@
                                                         
 						%>
 					</div>
-=======
                                 <div class="contacts">
-					<button class="contact" value="<%= request.getParameter("persons")%>">
-                                            <img src="img/profile.jpg" class="img-contact">						
-					</button>
-                                        <button class="contact" value="<%= request.getParameter("persons")%>">
-                                            <img src="img/profile.jpg" class="img-contact">						
-					</button>
-                                        <button class="contact" value="<%= request.getParameter("persons")%>">
-                                            <img src="img/profile.jpg" class="img-contact">						
-					</button>
-                                        <button class="contact" value="<%= request.getParameter("persons")%>">
-                                            <img src="img/profile.jpg" class="img-contact">						
-					</button>
-                                        <button class="contact" value="<%= request.getParameter("persons")%>">
-                                            <img src="img/profile.jpg" class="img-contact">						
-					</button>
-                                        <button class="contact" value="<%= request.getParameter("persons")%>">
-                                            <img src="img/profile.jpg" class="img-contact">						
-					</button>
-                                        <button class="contact" value="<%= request.getParameter("persons")%>">
-                                            <img src="img/profile.jpg" class="img-contact">						
-					</button>
-                                        <button class="contact" value="<%= request.getParameter("persons")%>">
-                                            <img src="img/profile.jpg" class="img-contact">						
-					</button>
-                                        <button class="contact" value="<%= request.getParameter("persons")%>">
-                                            <img src="img/profile.jpg" class="img-contact">						
-					</button>
-                                        <button class="contact" value="<%= request.getParameter("persons")%>">
-                                            <img src="img/profile.jpg" class="img-contact">						
-					</button>                                                                                                                              
->>>>>>> Home
+                                    <%
+                                        List<Chat> list = (List<Chat>)session.getAttribute("chatList");
+                                        for (Chat c : list)
+                                        {
+                                    %>
+                                    <button class="contact" value="<%= c.getId_receiver() %>">
+                                            <img src="img/profile.jpg" class="img-contact">
+                                            <p><%= c.getId_receiver() %></p>
+				    </button>
+                                    <%
+                                        }
+                                    %>
 				</div>
 			</div>
                     </form>
@@ -112,6 +96,7 @@
 					<div class=" receiver">Oila</div>
 				</div>								
 			</div>
+                    
 			<div class="send">
 				<div class="text-message-container">
 					<input type="text" name="text-message" class="text-message">

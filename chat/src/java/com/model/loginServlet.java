@@ -5,6 +5,7 @@
  */
 package com.model;
 
+import com.entity.Chat;
 import com.entity.User;
 import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import java.io.IOException;
@@ -33,27 +34,40 @@ public class loginServlet extends HttpServlet {
          boolean found= false;
         String username = req.getParameter("username");
         String password = req.getParameter("password");
- 
+        
+        User us = new User();
+        us.setUsername(username);
+        us.setPassword(password);
+        
         SessionFactory factory = session.getSessionFactory();
         Session s = factory.openSession(); // creo una sessione e la avvio
+        Session s2 = factory.openSession(); // creo una sessione e la avvio
+        
+        HttpSession oldSession= req.getSession(false);
+        if(oldSession != null)
+        oldSession.invalidate();
         
          List<User> users= s.createQuery("FROM User").list(); //leggo la lista di users dalla tabella e la inserisco in una lista
          for(User u : users){ //scorro la lista di utenti letti
 
             if(username.equals(u.getUsername()) && password.equals(u.getPassword())) {
                 
-                HttpSession oldSession= req.getSession(false);
-                if(oldSession != null)
-                    oldSession.invalidate();
-                HttpSession currentSession = req.getSession();
-                currentSession.setAttribute("id", u.getID());
-                currentSession.setAttribute("user", username);
-                currentSession.setAttribute("pass", password);
+                us.setID(u.getID());
                 
-                RequestDispatcher rd = req.getRequestDispatcher("chatServlet");
-                rd.forward(req,resp);
+                HttpSession currentSession = req.getSession();
+                currentSession.setAttribute("currentLogged", us);
+               
+                List<Chat> chats = s2.createQuery("FROM Chat WHERE id_sender="+u.getID()).list();
+                currentSession.setAttribute("chatList", chats);
+                
+                found = true;
+                resp.sendRedirect("home.jsp");
             }
          }
-           resp.sendRedirect("index.jsp");
+         if (found == false)
+         {
+             resp.sendRedirect("index.jsp");
+         }
+           
     }
 }

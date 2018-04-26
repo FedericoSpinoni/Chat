@@ -42,14 +42,6 @@
                     
                     <form action="${pageContext.request.contextPath}/showMessageServlet" method="post">
 			<div class="contacts-container">
-
-				<div class="contacts">
-					<div class="contact"><img src="img/profile.jpg" class="img-contact">
-						<%
-							// dare un id ad ogni chat stampata
-                                                        
-						%>
-					</div>
                                 <div class="contacts">
                                     <%
                                         List<Chat> list = (List<Chat>)session.getAttribute("chatList");

@@ -29,7 +29,7 @@
 			<div class="profile">
                             <img src="img/profile.jpg" class="img-profile">
                             <%User u = (User)session.getAttribute("currentLogged");%>
-                            <p><%= " @" + u.getUsername() %></p>
+                            <p><%= "@" + u.getUsername() %></p>
 			</div>
 			<div class="search">
 				<div class="search-container">
@@ -45,14 +45,18 @@
                                 <div class="contacts">
                                     <%
                                         List<Chat> list = (List<Chat>)session.getAttribute("chatList");
-                                        for (Chat c : list)
-                                        {
+                                        List<User> listUser = (List<User>)session.getAttribute("listUsername");
+                                        for (Chat c : list) {
+                                            for (User t : listUser) {
+                                                if (c.getId_receiver() == t.getID()) {
                                     %>
-                                    <button class="contact" value="<%= c.getId_receiver() %>">
+                                    <button class="contact">
                                             <img src="img/profile.jpg" class="img-contact">
-                                            <p><%= c.getId_receiver() %></p>
+                                            <p><%= "@" + t.getUsername() %></p>
 				    </button>
                                     <%
+                                                }
+                                            }
                                         }
                                     %>
 				</div>

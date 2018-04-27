@@ -25,7 +25,7 @@ public class Chat {
     private int id_sender;
     private int id_receiver;
     private int id_message;
-     private String textMessage;
+    private String textMessage;
 
     /**
      * Return an id

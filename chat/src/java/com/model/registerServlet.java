@@ -48,6 +48,7 @@ public class registerServlet extends HttpServlet {
         for(User u : users){
             if(username.equals(u.getUsername())){
                 out.println("Error, already exist!");
+                resp.sendRedirect("index.jsp");
             }
         }
         HttpSession oldSession= req.getSession(false);

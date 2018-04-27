@@ -40,6 +40,7 @@ public class loginServlet extends HttpServlet {
         us.setPassword(password);
         
         SessionFactory factory = session.getSessionFactory();
+        
         Session s = factory.openSession(); // creo una sessione e la avvio
         Session s2 = factory.openSession(); // creo una sessione e la avvio
         

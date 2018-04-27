@@ -29,30 +29,68 @@ public class showMessageServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String idChat = req.getParameter("id_selected");
+        String idChat = req.getParameter("value_contact");
         
         
         SessionFactory factory = session.getSessionFactory();
         Session s = factory.openSession(); // creo una sessione e la avvio
         
         HttpSession currentSession = req.getSession();
-        User myId = (User) currentSession.getAttribute("currentLogged");
-        myId.getID();
+        User myId = (User) currentSession.getAttribute("currentLogged");     
         
-        List<Chat> chats = s.createQuery("FROM Chat WHERE  id_sender=" + myId + " AND id_receiver=" + idChat + " OR id_sender=" + idChat + " AND id_receiver=" + myId).list(); //leggo la lista di users dalla tabella e la inserisco in una lista
-        
+        String sss = String.valueOf(myId.getID());
+        System.out.println(sss + " " + idChat );
+       List<Chat> chats = s.createQuery("FROM Chat WHERE  (id_sender=" + sss + " AND id_receiver=" + idChat + ") OR (id_sender=" + idChat + " AND id_receiver=" + sss +")").list(); //leggo la lista di users dalla tabella e la inserisco in una lista
+       
+       PrintWriter out = resp.getWriter();
+         for (Chat c : chats){
+            if(c.getId_sender() == myId.getID()){
+                out.println("<div class=\"message\">");
+                out.println("<div class=\" sender\">" + c.getTextMessage() + "</div>");
+                out.println("</div>");                        
+                }
+                else {        
+                    out.println("<div class=\"message\">");
+                    out.println("<div class=\" receiver\">" + c.getTextMessage()+"</div>");                    
+                    out.println("</div>");               	
+                     }
+            }
+        req.setAttribute("message", out); // This will be available as ${message}
+        req.getRequestDispatcher("/WEB-INF/home.jsp").forward(req, resp);
+       
 
-            /*for(Chat c : chats){
-                        
-                for (Message m : msg)
-                {
-                    if(m.getID() == c.getId_receiver() ){
-                 // stampare messaggio trovato a schermo
-                    }
-                }    
-            }*/    
-            currentSession.setAttribute("listMessages", chats);
-            //factory.close();
+            /*
+        <div class="chat"> 
+                             <% 
+                                 String s = (String)session.getAttribute("state");
+                                 if ( s.equals("true"))
+                                 {
+                                User u2 = (User)session.getAttribute("currentLogged");
+                                List<Chat> messages = (List<Chat>)session.getAttribute("listMessages");
+                                for (Chat c : messages)
+                                {
+                                    if(c.getId_sender() == u2.getID()){
+                                        %>
+                                        <div class="message">
+                                            <div class=" sender"><%=c.getTextMessage() %></div>
+                                        </div>
+                                        <%
+                                     }
+                                    else {
+                                    %>
+                                    <div class="message">
+                                        <div class=" receiver"><%=c.getTextMessage() %></div>
+                                    </div>	
+                                    <% }
+                                }
+                                }
+                            %>		
+                        </div>
+
+            */    
+            //currentSession.setAttribute("state", "true");
+            //currentSession.setAttribute("listMessages", chats);
+            factory.close();
         }  
   
  }

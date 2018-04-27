@@ -59,6 +59,7 @@ public class loginServlet extends HttpServlet {
                
                 List<Chat> chats = s2.createQuery("FROM Chat WHERE id_sender="+u.getID()).list();
                 currentSession.setAttribute("chatList", chats);
+                currentSession.setAttribute("listUsername", users);
                 
                 found = true;
                 resp.sendRedirect("home.jsp");

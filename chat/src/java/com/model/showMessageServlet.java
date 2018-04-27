@@ -7,6 +7,7 @@ package com.model;
 
 import com.entity.Chat;
 import com.entity.Message;
+import com.entity.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -28,18 +29,20 @@ public class showMessageServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String idChat = req.getParameter("id_chat");
+        String idChat = req.getParameter("id_selected");
+        
         
         SessionFactory factory = session.getSessionFactory();
         Session s = factory.openSession(); // creo una sessione e la avvio
         
         HttpSession currentSession = req.getSession();
-        String myId = (String) currentSession.getAttribute("id");
+        User myId = (User) currentSession.getAttribute("currentLogged");
+        myId.getID();
         
-        List<Chat> chats = s.createQuery("FROM Chat WHERE  id_sender=" + myId + "id_receiver=" + idChat).list(); //leggo la lista di users dalla tabella e la inserisco in una lista
-        List<Message> msg = s.createQuery("FROM Message").list();
+        List<Chat> chats = s.createQuery("FROM Chat WHERE  id_sender=" + myId + " AND id_receiver=" + idChat + " OR id_sender=" + idChat + " AND id_receiver=" + myId).list(); //leggo la lista di users dalla tabella e la inserisco in una lista
+        
 
-            for(Chat c : chats){
+            /*for(Chat c : chats){
                         
                 for (Message m : msg)
                 {
@@ -47,6 +50,9 @@ public class showMessageServlet extends HttpServlet {
                  // stampare messaggio trovato a schermo
                     }
                 }    
-            }      
-        }    
+            }*/    
+            currentSession.setAttribute("listMessages", chats);
+            //factory.close();
+        }  
+  
  }

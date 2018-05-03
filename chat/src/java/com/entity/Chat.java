@@ -18,14 +18,13 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "chat")
 public class Chat {
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int ID;
     private int id_sender;
     private int id_receiver;
     private int id_message;
-    private String textMessage;
 
     /**
      * Return an id
@@ -97,20 +96,6 @@ public class Chat {
      */
     public void setId_message(int id_message) {
         this.id_message = id_message;
-    }
-
-    /**
-     * @return the message
-     */
-    public String getTextMessage() {
-        return textMessage;
-    }
-
-    /**
-     * @param message the message to set
-     */
-    public void setTextMessage(String message) {
-        this.textMessage = message;
     }
 
 }

@@ -8,6 +8,7 @@ package com.model;
 import com.entity.Chat;
 import com.entity.Message;
 import com.entity.User;
+import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -31,6 +32,7 @@ public class showMessageServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String idChat = req.getParameter("value_contact");
         
+        List<Message> m2 = null;
         
         SessionFactory factory = session.getSessionFactory();
         Session s = factory.openSession(); // creo una sessione e la avvio
@@ -40,57 +42,30 @@ public class showMessageServlet extends HttpServlet {
         
         String sss = String.valueOf(myId.getID());
         System.out.println(sss + " " + idChat );
-       List<Chat> chats = s.createQuery("FROM Chat WHERE  (id_sender=" + sss + " AND id_receiver=" + idChat + ") OR (id_sender=" + idChat + " AND id_receiver=" + sss +")").list(); //leggo la lista di users dalla tabella e la inserisco in una lista
+        List<Chat> chats = s.createQuery("FROM Chat WHERE  (id_sender=" + sss + " AND id_receiver=" + idChat + ") OR (id_sender=" + idChat + " AND id_receiver=" + sss +")").list(); //leggo la lista di users dalla tabella e la inserisco in una lista
+        List<Message> m = s.createQuery("FROM Message").list();
        
-       PrintWriter out = resp.getWriter();
-         for (Chat c : chats){
-            if(c.getId_sender() == myId.getID()){
-                out.println("<div class=\"message\">");
-                out.println("<div class=\" sender\">" + c.getTextMessage() + "</div>");
-                out.println("</div>");                        
+        for (Chat c : chats)
+        {
+            for (Message tempMess : m)
+            {
+                
+                if(c.getId_message() == tempMess.getID())
+                {                   
+                        Message e = new Message();
+                        e.setMessage(tempMess.getMessage());
+                        e.setId_receiver(c.getId_receiver()); //ho settato nel messaggio l'ip di chi riceve in modo che quando lo passa alla pagina jsp sappia dove posizionarlo
+                        m2.add(e);
                 }
-                else {        
-                    out.println("<div class=\"message\">");
-                    out.println("<div class=\" receiver\">" + c.getTextMessage()+"</div>");                    
-                    out.println("</div>");               	
-                     }
             }
-        req.setAttribute("message", out); // This will be available as ${message}
-        req.getRequestDispatcher("/WEB-INF/home.jsp").forward(req, resp);
-       
-
-            /*
-        <div class="chat"> 
-                             <% 
-                                 String s = (String)session.getAttribute("state");
-                                 if ( s.equals("true"))
-                                 {
-                                User u2 = (User)session.getAttribute("currentLogged");
-                                List<Chat> messages = (List<Chat>)session.getAttribute("listMessages");
-                                for (Chat c : messages)
-                                {
-                                    if(c.getId_sender() == u2.getID()){
-                                        %>
-                                        <div class="message">
-                                            <div class=" sender"><%=c.getTextMessage() %></div>
-                                        </div>
-                                        <%
-                                     }
-                                    else {
-                                    %>
-                                    <div class="message">
-                                        <div class=" receiver"><%=c.getTextMessage() %></div>
-                                    </div>	
-                                    <% }
-                                }
-                                }
-                            %>		
-                        </div>
-
-            */    
-            //currentSession.setAttribute("state", "true");
-            //currentSession.setAttribute("listMessages", chats);
-            factory.close();
+        }
+        
+        resp.setContentType("application/json");
+        resp.setCharacterEncoding("UTF-8");
+        Gson g= new Gson();
+        String temp = g.toJson(m2);
+        resp.getWriter().write(temp);
+        factory.close();
         }  
   
  }

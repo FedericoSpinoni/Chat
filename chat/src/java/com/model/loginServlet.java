@@ -40,9 +40,7 @@ public class loginServlet extends HttpServlet {
         us.setPassword(password);
         
         SessionFactory factory = session.getSessionFactory();
-        
         Session s = factory.openSession(); // creo una sessione e la avvio
-        Session s2 = factory.openSession(); // creo una sessione e la avvio
         
         HttpSession oldSession= req.getSession(false);
         if(oldSession != null)
@@ -58,7 +56,7 @@ public class loginServlet extends HttpServlet {
                 HttpSession currentSession = req.getSession();
                 currentSession.setAttribute("currentLogged", us);
                
-                List<Chat> chats = s2.createQuery("FROM Chat WHERE id_sender="+u.getID()).list();
+                List<Chat> chats = s.createQuery("FROM Chat WHERE id_sender="+u.getID()).list();
                 currentSession.setAttribute("chatList", chats);
                 currentSession.setAttribute("listUsername", users);
                 
@@ -70,6 +68,6 @@ public class loginServlet extends HttpServlet {
          {
              resp.sendRedirect("index.jsp");
          }
-           
+         factory.close();
     }
 }

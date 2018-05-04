@@ -10,6 +10,7 @@ import com.entity.Message;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,6 +24,7 @@ import org.hibernate.SessionFactory;
  * @author mike
  */
 @WebServlet(name = "messageServlet", urlPatterns = {"/messageServlet"})
+@MultipartConfig
 public class messageServlet extends HttpServlet {
 
     /**
@@ -36,9 +38,9 @@ public class messageServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         super.doPost(req, resp);
-        String msg = req.getParameter("text-message");
-        String receiver = req.getParameter("id_receiver");
-
+        String msg = req.getParameter("testMessage");
+        String receiver = "6";
+        
         SessionFactory factory = session.getSessionFactory();
         Session s = factory.openSession(); // creo una sessione e la avvio
 
@@ -46,23 +48,20 @@ public class messageServlet extends HttpServlet {
         String myId = (String) currentSession.getAttribute("id");
         
         List<Message> messages = s.createQuery("FROM Message").list();
-       
-        Message m = messages.get(messages.size());
-        
+        Message m = new Message();        
         m.setMessage(msg);
         s.beginTransaction();
         s.save(m);
         s.getTransaction().commit();
         
-        Chat c = new Chat();
+        //Chat c = new Chat();
         //c.setId_receiver(receiver);
         //c.setId_sender(myId);
         //c.setId_message(0); -> far scorrere i messaggi per ottenere l'ID dell'ultimo
         //s.beginTransaction();
         //s.save(c);
         //s.getTransaction().commit();
-        
-        
+                
         s.close();
         factory.close();
 

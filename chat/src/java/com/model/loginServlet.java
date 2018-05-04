@@ -6,6 +6,7 @@
 package com.model;
 
 import com.entity.Chat;
+import com.entity.Message;
 import com.entity.User;
 import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import java.io.IOException;
@@ -42,6 +43,7 @@ public class loginServlet extends HttpServlet {
         SessionFactory factory = session.getSessionFactory();
         Session s = factory.openSession(); // creo una sessione e la avvio
         
+        
         HttpSession oldSession= req.getSession(false);
         if(oldSession != null)
         oldSession.invalidate();
@@ -60,6 +62,9 @@ public class loginServlet extends HttpServlet {
                 currentSession.setAttribute("chatList", chats);
                 currentSession.setAttribute("listUsername", users);
                 
+                /*List<Message> messageUpdated = s.createQuery("FROM Message").list();
+                req.setAttribute("mes", messageUpdated);*/
+                
                 found = true;
                 resp.sendRedirect("home.jsp");
             }
@@ -68,6 +73,5 @@ public class loginServlet extends HttpServlet {
          {
              resp.sendRedirect("index.jsp");
          }
-         factory.close();
     }
 }

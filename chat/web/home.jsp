@@ -4,6 +4,7 @@
     Author     : mike
 --%>
 
+<%@page import="com.entity.Message"%>
 <%@page import="com.model.chatServlet"%>
 <%@page import="com.entity.User"%>
 <%@page import="java.util.List"%>
@@ -40,7 +41,9 @@
 				</div>
 			</div>
                     
-                    <form action="${pageContext.request.contextPath}/showMessageServlet" method="post">
+                   
+                   
+                        
 			<div class="contacts-container">
                                 <div class="contacts">
                                     <%
@@ -65,17 +68,46 @@
                                     %>
 				</div>
 			</div>
-                    </form>
+                
                                         
 		</div>
 		<div class="container-chat">
 			<div class="person">
 				<img src="img/profile.jpg" class="img-profile">
 			</div>
-                    <div class="chat"> 
-                        <div>${message}</div>		
-                        </div>
+                    <form  method="post" id="loginForm" enctype="multipart/form-data"> 
+                    <div class="chat"> 	
+                        
+                    </div>
+
+                    <div class="send">
+                <div class="text-message-container">
+                    <input type="text" name="testMessage" class="text-message">
+                    <button type="submit" class="send-message" onclick="addData();"><img src="img/send1.png" class="img-send"></button>
+                </div>
+            </div>
+                    </form>
 		</div>
 	</div>
 </body>
+
+<script type="text/javascript">
+    function addData(){
+  if(window.XMLHttpRequest) { //Assuming you're not on one of the old IEs.
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange=function() {
+        if (xhttp.readyState === 4 && xhttp.status === 200) {
+            var myArr = JSON.parse(xhttp.responseText);
+            console.log(myArr);
+            addToTable(myArr); // function to add data to table.
+
+        }
+    }
+    xhttp.open("POST","messageServlet",true);
+    var formData = new FormData(document.getElementById('loginForm'));
+    xhttp.send(formData);
+  }
+  else console.log('not working');
+}
+</script>
 </html>

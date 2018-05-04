@@ -21,7 +21,6 @@ public class Message {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id_receiver;
     private int ID;
     private String message;
 
@@ -61,18 +60,5 @@ public class Message {
         this.message = message;
     }
 
-    /**
-     * @return the id_receiver
-     */
-    public int getId_receiver() {
-        return id_receiver;
-    }
-
-    /**
-     * @param id_receiver the id_receiver to set
-     */
-    public void setId_receiver(int id_receiver) {
-        this.id_receiver = id_receiver;
-    }
 
 }

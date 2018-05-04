@@ -54,11 +54,11 @@ public class showMessageServlet extends HttpServlet {
                 {                   
                         Message e = new Message();
                         e.setMessage(tempMess.getMessage());
-                        e.setId_receiver(c.getId_receiver()); //ho settato nel messaggio l'ip di chi riceve in modo che quando lo passa alla pagina jsp sappia dove posizionarlo
                         m2.add(e);
                 }
             }
         }
+        
         
         resp.setContentType("application/json");
         resp.setCharacterEncoding("UTF-8");

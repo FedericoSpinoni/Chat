@@ -11,6 +11,7 @@ import static java.lang.System.out;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -24,6 +25,7 @@ import org.hibernate.SessionFactory;
  * @author mike
  */
 @WebServlet(name = "registerServlet", urlPatterns = {"/registerServlet"})
+
 public class registerServlet extends HttpServlet {
 
     /**
@@ -37,13 +39,12 @@ public class registerServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
-        super.doPost(req, resp); 
-        
         String username = req.getParameter("username");
         String password = req.getParameter("password");
                
         SessionFactory factory = session.getSessionFactory();
         Session s = factory.openSession(); // creo una sessione e la avvio
+        
         List<User> users= s.createQuery("FROM User").list();
         for(User u : users){
             if(username.equals(u.getUsername())){
@@ -58,14 +59,23 @@ public class registerServlet extends HttpServlet {
         currentSession.setAttribute("user", username);
         currentSession.setAttribute("pass", password);
         
-        User us= new User();
+        if(username.equals(null) || password.equals(null))
+        {
+            resp.sendRedirect("index.jsp");
+        } 
+        else {
+          User us= new User();
+
         us.setUsername(username);
         us.setPassword(password);
         s.beginTransaction();
         s.save(us);
         s.getTransaction().commit();
+        s.close();
+        factory.close();
+            resp.sendRedirect("index.jsp");
+        }
         
-        resp.sendRedirect("home.jsp");
     }
-    
+     
    }

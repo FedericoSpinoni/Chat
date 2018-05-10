@@ -31,7 +31,7 @@
                 <tr>
                     <td>
                         <br>
-                        <input type="submit" name="submit" class="button" value="REGISTER">
+                        <input type="submit" name="submit" class="button" value="REGISTER" >
                     </td>
                 </tr>
             </tbody>
@@ -39,5 +39,4 @@
     </form>
 
 </body>
-
 </html>

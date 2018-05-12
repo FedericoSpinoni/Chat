@@ -20,6 +20,11 @@
             <tbody>
                 <tr>
                     <td>
+                        <img class="logo" src="img/abchat_orizzontale.png">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <input type="text" name="username" class="font" placeholder="Username">
                     </td>
                 </tr>

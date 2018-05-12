@@ -17,6 +17,11 @@
     <form action="${pageContext.request.contextPath}/registerServlet" method="post">
         <table class="table">
             <tbody>
+                <tr class="container-logo">
+                    <td>
+                        <img class="logo" src="img/abchat_orizzontale.png">
+                    </td>
+                </tr>
                 <tr>
                     <td>
                         <input type="text" name="username" class="font" placeholder="Username">

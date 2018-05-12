@@ -18,7 +18,7 @@
     <form action="${pageContext.request.contextPath}/loginServlet" method="post">
         <table class="table">
             <tbody>
-                <tr>
+                <tr class="container-logo">
                     <td>
                         <img class="logo" src="img/abchat_orizzontale.png">
                     </td>

@@ -16,8 +16,8 @@
   opacity: 1;
   position: absolute;
   left: 50%;
+  top: 42%;
   margin-left: -191px;
-  top: 50%;
   margin-top: -191px;
   border-radius: 6px;
 }
@@ -124,6 +124,14 @@ a:hover {
   color: #127CC0;
 }
 
+.container-logo{
+    vertical-align: middle;
+    text-align: center;
+}
+
 .logo{
+    height: 150px;
+    padding: 0;
+    margin: 0;
     
 }

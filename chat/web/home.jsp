@@ -34,19 +34,21 @@
                             <p><%= "@" + u.getUsername() %></p>
 			</div>
                         
-                        <form  method="post" id="searchForm" enctype="multipart/form-data"> 
+                       <!-- <form  method="post" name="searchForm" id="searchForm" enctype="multipart/form-data"> -->
+                       <form action="${pageContext.request.contextPath}/addFriends" method="post">
                             <div class="search">
                                     <div class="search-container">
                                             <button type="submit" class="search-button"><img src="img/search.png" class="img-search"></button>
-                                            <input type="text" class="search-text" onclick="addFriend();">
+                                            <input type="text" name="searching" id="searching" class="search-text">
                                     </div>
                             </div>
                         </form>
                    
                    
-                        <form  method="post" id="selectChatForm" enctype="multipart/form-data">
+                       <form  method="post" id="selectChatForm" enctype="multipart/form-data">
+                     
                             
-                            <div class="contacts-container">
+                           <div class="contacts-container" name="thisdiv" id="thisdiv">
                                     <div class="contacts">
                                         <%
 
@@ -78,27 +80,26 @@
 			<div class="person">
                             <img src="img/profile.jpg" class="img-profile">
 			</div>
-                <form  method="post" id="messageForm" enctype="multipart/form-data">     
+             <!--   <form  method="post" id="messageForm" enctype="multipart/form-data">    -->
+             <form action="${pageContext.request.contextPath}/messageServlet" method="post">
                     <div class="chat">
-                        <div class="thisdiv" id="thisdiv">
-                        </div>
                         
                     </div>
 
                     <div class="send">
                 <div class="text-message-container">
                     <input type="text" name="testMessage" class="text-message" id="toSend">
-                    <button type="submit" class="send-message" onclick="addMessage();" ><img src="img/send1.png" class="img-send"></button>
+                    <button type="submit" class="send-message" ><img src="img/send1.png" class="img-send"></button>
                 </div>
             </div>
                   </form>   
 		</div>
            
 	</div>
-</body>
+
 
 <script type="text/javascript" >
- 
+ /*
  function addMessage(){
           if(window.XMLHttpRequest) { 
     var xhttp = new XMLHttpRequest();
@@ -107,7 +108,7 @@
     xhttp.send(formData);
     }
     $.ajax({
-        url: "/home/mike/Scrivania/Repository/Chat/chat/src/java/com/model/messageServlet.java",
+        url: "",
         type:"POST",
         contentType:'application/json; charset=utf-8',
         success: function(response){
@@ -117,15 +118,6 @@
     });
  }
  
- function selectChat()
- {
-    if(window.XMLHttpRequest) { 
-    var xhttp = new XMLHttpRequest();
-    xhttp.open("POST","messageServlet",true);
-    var formData = new FormData(document.getElementById('messageForm'));
-    xhttp.send(formData);
-    }
- }
  
   /*  function addMessage(){
         $.ajax({
@@ -154,7 +146,7 @@
             }
         });
     }
-    /*function addMessage(){
+    function addMessage(){
   if(window.XMLHttpRequest) { 
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange=function() {
@@ -169,18 +161,6 @@
   else console.log('not working');
 }
 
-
-/*function addMessage(){
-    $.post('messageServlet', function(responseJson){
-       var $table = $("<table>").appendTo($("#somediv"));
-        $.each(responseJson, function(index, rmessage) {    // Iterate over the JSON array.
-            $("<tr>").appendTo($table)                     // Create HTML <tr> element, set its text content with currently iterated item and append it to the <table>.
-                .append($("<td>").text(rmessage.message))        // Create HTML <td> element, set its text content with id of currently iterated product and append it to the <tr>.
-         });
-        
-    });
-}
-*/
 function printMessage(){
     $.getJSON("messageServlet", function(result){
             $.each(result, function(i, field){
@@ -198,40 +178,22 @@ function printMessage(){
 });
 }*/
 
-function addFriend(){
-  if(window.XMLHttpRequest) { //Assuming you're not on one of the old IEs.
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange=function() {
-        if (xhttp.readyState === 4 && xhttp.status === 200) {
-            var myArr = JSON.parse(xhttp.responseText);
-            console.log(myArr);
-            addToTable(myArr); // function to add data to table.
-
-        }
+function addFriend(e){
+    var userName = $('#searching').val();
+    console.log("ADD FRIEND Started" + userName);
+   $.ajax({
+            url:"addFriends",
+            method:"POST",
+            data:{"searching" : userName},
+            success: function(response){
+                $('#thisdiv').load(document.URL +  ' #thisdiv');
+                console.log("username");
+                console.log(response);
     }
-    xhttp.open("POST","addFriend",true);
-    var formData = new FormData(document.getElementById('searchForm'));
-    xhttp.send(formData);
-  }
-  else console.log('not working');
+       });
 }
 
-function selectChat(){
-  if(window.XMLHttpRequest) { //Assuming you're not on one of the old IEs.
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange=function() {
-        if (xhttp.readyState === 4 && xhttp.status === 200) {
-            var myArr = JSON.parse(xhttp.responseText);
-            console.log(myArr);
-            addToTable(myArr); // function to add data to table.
-
-        }
-    }
-    xhttp.open("POST","showMessageServlet",true);
-    var formData = new FormData(document.getElementById('selectChatForm'));
-    xhttp.send(formData);
-  }
-  else console.log('not working');
-}
 </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</body>
 </html>

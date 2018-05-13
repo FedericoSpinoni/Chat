@@ -7,6 +7,7 @@ package com.model;
 
 import com.entity.Chat;
 import com.entity.User;
+import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -28,8 +29,8 @@ public class addFriends extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp); //To change body of generated methods, choose Tools | Templates.
-        String username = req.getParameter("username");
+        
+        String username = req.getParameter("searching");
         
         SessionFactory factory = session.getSessionFactory();
         Session s = factory.openSession(); // creo una sessione e la avvio
@@ -42,16 +43,24 @@ public class addFriends extends HttpServlet {
             if(u.getUsername().equals(username))
             {
                 Chat c= new Chat();
-                c.setId_message(0);
+                c.setId_message(1);
                 c.setId_receiver(u.getID());
                 c.setId_sender((int) currentSession.getAttribute("id"));
                 s.beginTransaction();
                 s.save(c);
-                s.getTransaction().commit();
-                break;                
+                s.getTransaction().commit();               
             }
         }
-        resp.sendRedirect("chatServlet");
+        resp.setContentType("application/json");
+        resp.setCharacterEncoding("UTF-8");
+        Gson g= new Gson();
+        List<Chat> chats= s.createQuery("From Chat").list();
+        
+        String temp= g.toJson(chats.get(chats.size()-1));
+        
+        resp.getWriter().write(temp);      
+        s.close();
+        factory.close();
     }
     
     

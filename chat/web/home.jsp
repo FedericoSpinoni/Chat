@@ -56,7 +56,7 @@
                                             List<User> listUser = (List<User>)session.getAttribute("listUsername");
                                             for (Chat c : list) {
                                                 for (User t : listUser) {
-                                                    if (c.getId_receiver() == t.getID()) { 
+                                                    if (c.getId_receiver() == t.getID() && c.getId_message()==1)  { 
                                         %>
 
                                         <button class="contact" name ="contact-selected" value="<%=t.getID()%>" onclick="selectChat();">

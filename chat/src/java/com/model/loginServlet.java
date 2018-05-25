@@ -1,25 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.model;
 
 import com.entity.Chat;
-import com.entity.Message;
 import com.entity.User;
-import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -62,9 +52,6 @@ public class loginServlet extends HttpServlet {
                 List<Chat> chats = s.createQuery("FROM Chat WHERE id_sender="+u.getID()).list();
                 currentSession.setAttribute("chatList", chats);
                 currentSession.setAttribute("listUsername", users);
-                
-                /*List<Message> messageUpdated = s.createQuery("FROM Message").list();
-                req.setAttribute("mes", messageUpdated);*/
                 
                 found = true;
                 resp.sendRedirect("home.jsp");
